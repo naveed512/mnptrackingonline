@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M&P Tracking Pakistan – Track Your MNP Courier Online</title>
+  <meta name="description" content="Track your M&P courier shipment online in Pakistan. Use MNP Tracking to get real-time parcel status, consignment updates, and delivery information across all cities."/>
+  <meta name="keywords" content="MNP tracking, M&P tracking, M&P courier tracking, MNP tracking Pakistan, mnptracking.org.pk, M&P parcel tracking, track M&P shipment online, M and P tracking"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #E5202E;
+      --dark: #0D0D0D;
+      --light: #F5F5F0;
+      --mid: #1A1A1A;
+      --accent: #FF4B57;
+      --muted: #888;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 99;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .logo span { color: var(--red); }
+    nav a.nav-cta {
+      background: var(--red);
+      color: #fff;
+      padding: 0.5rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    nav a.nav-cta:hover { background: var(--accent); }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 5% 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(229,32,46,0.15);
+      border: 1px solid rgba(229,32,46,0.4);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    h1 span { color: var(--red); }
+    .hero p {
+      color: #bbb;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      padding: 0.75rem 1.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid #444;
+      color: var(--light);
+      padding: 0.75rem 1.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--red); transform: translateY(-2px); }
+
+    /* TRACKING BOX VISUAL */
+    .hero-visual {
+      background: var(--mid);
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .track-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .track-input-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .track-input-row input {
+      flex: 1;
+      background: #111;
+      border: 1px solid #333;
+      color: var(--light);
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+    }
+    .track-input-row button {
+      background: var(--red);
+      border: none;
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .status-card {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-top: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px #22c55e88;
+    }
+    .status-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .status-sub { color: var(--muted); font-size: 0.82rem; }
+
+    /* STATS */
+    .stats {
+      background: var(--mid);
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      padding: 2.5rem 5%;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--red);
+    }
+    .stat-desc { color: var(--muted); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    /* SECTIONS */
+    section { padding: 4.5rem 5%; max-width: 1200px; margin: 0 auto; }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+    h2 span { color: var(--red); }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 2.5rem; }
+
+    /* CARDS GRID */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .card {
+      background: var(--mid);
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: var(--red); transform: translateY(-4px); }
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p { color: #999; font-size: 0.9rem; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .step { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      min-width: 40px;
+    }
+    .step h3 { font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+    .step p { color: #999; font-size: 0.88rem; }
+
+    /* FAQ */
+    .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item {
+      background: var(--mid);
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 1.3rem 1.5rem;
+    }
+    .faq-item h3 { font-weight: 600; font-size: 0.97rem; margin-bottom: 0.4rem; }
+    .faq-item p { color: #999; font-size: 0.88rem; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--red);
+      padding: 3.5rem 5%;
+      text-align: center;
+    }
+    .cta-band h2 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem; }
+    .cta-band p { color: rgba(255,255,255,0.8); margin-bottom: 1.8rem; }
+    .cta-band a {
+      background: #fff;
+      color: var(--red);
+      padding: 0.8rem 2.2rem;
+      border-radius: 5px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--mid);
+      border-top: 1px solid #222;
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 100%;
+    }
+    footer a { color: var(--red); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://mnptracking.org.pk" class="logo">MNP<span>Tracking</span></a>
+  <a href="https://mnptracking.org.pk" class="nav-cta">Track Parcel Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="max-width:1200px;margin:0 auto;">
+  <div>
+    <div class="hero-badge">🇵🇰 Pakistan's Courier Tracker</div>
+    <h1>Real-Time <span>M&P Tracking</span> Pakistan</h1>
+    <p>Track your M&P courier shipment instantly with your consignment number. Get live delivery updates across 1,600+ locations in Pakistan — all in one place at <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">mnptracking.org.pk</a>.</p>
+    <div class="hero-btns">
+      <a href="https://mnptracking.org.pk" class="btn-primary">Track Your Parcel →</a>
+      <a href="https://mnptracking.org.pk" class="btn-outline">How It Works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="track-label">Enter Tracking Number</div>
+    <div class="track-input-row">
+      <input type="text" placeholder="e.g. 1234567890" readonly/>
+      <button>Track</button>
+    </div>
+    <div class="status-card">
+      <div class="status-dot"></div>
+      <div>
+        <div class="status-title">Out for Delivery</div>
+        <div class="status-sub">Lahore → Islamabad · Updated 2 min ago</div>
+      </div>
+    </div>
+    <div style="margin-top:1.2rem;font-size:0.8rem;color:#555;text-align:center;">
+      Visit <a href="https://mnptracking.org.pk" style="color:var(--red);">mnptracking.org.pk</a> for live results
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">750+</div><div class="stat-desc">Courier Centers</div></div>
+    <div><div class="stat-num">1,600+</div><div class="stat-desc">Delivery Locations</div></div>
+    <div><div class="stat-num">20M+</div><div class="stat-desc">Annual Deliveries</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-desc">Online Tracking</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <h2>Why Use <span>MNP Tracking</span>?</h2>
+  <p class="section-sub">Our <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">MNP Tracking platform</a> provides the fastest, cleanest parcel tracking experience for M&P courier in Pakistan.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Instant Tracking Results</h3>
+      <p>Enter your M&P consignment number and get real-time shipment status within seconds — no delays, no login required.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Nationwide Coverage</h3>
+      <p>Track M&P parcels across Karachi, Lahore, Islamabad, Multan, Faisalabad, and 1,600+ delivery locations across Pakistan.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>Mobile-Friendly Interface</h3>
+      <p>Our <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">M&P tracking online</a> platform is fully optimised for mobile — track from anywhere, anytime.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>Secure & Encrypted</h3>
+      <p>All tracking queries use HTTPS encryption. Your consignment data is safe and never stored on third-party servers.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>COD & Prepaid Support</h3>
+      <p>Track both Cash-on-Delivery and prepaid M&P shipments. Get full status history from booking to final delivery.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h3>International Tracking</h3>
+      <p>M&P operates in 210+ international locations. Use <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">MNP Tracking Pakistan</a> for cross-border shipment updates too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:var(--mid);border-top:1px solid #222;border-bottom:1px solid #222;max-width:100%;padding:4rem 5%;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <h2>How to <span>Track M&P Parcel</span> Online</h2>
+    <p class="section-sub">Tracking your M&P courier shipment on <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">mnptracking.org.pk</a> takes less than 30 seconds.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Find Your Tracking Number</h3>
+          <p>Your M&P tracking number (10 digits) is printed on your booking receipt or sent via SMS after shipment booking.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Enter It on MNP Tracking</h3>
+          <p>Visit <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">mnptracking.org.pk</a>, paste your consignment number in the tracking box, and press Track.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Get Live Delivery Status</h3>
+          <p>Instantly see your parcel's current location, movement history, estimated delivery date, and courier centre details.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT M&P -->
+<section>
+  <h2>About <span>M&P Express Logistics</span></h2>
+  <p style="color:#aaa;max-width:800px;margin-bottom:1rem;">
+    M&P Express Logistics (Muller &amp; Phipps Pakistan) is one of Pakistan's oldest and most trusted courier companies, operating since 1986. With <strong style="color:var(--light);">750+ courier centres</strong>, <strong style="color:var(--light);">3,400+ employees</strong>, and over <strong style="color:var(--light);">20 million annual deliveries</strong>, M&P is the backbone of eCommerce logistics in Pakistan.
+  </p>
+  <p style="color:#aaa;max-width:800px;margin-bottom:1rem;">
+    Whether you are an online shopper waiting for your order, a business sending bulk shipments, or someone receiving a COD parcel — the <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">MNP Tracking</a> platform provides you a fast and clean way to monitor your M&P shipment status online in Pakistan.
+  </p>
+  <p style="color:#aaa;max-width:800px;">
+    Standard inter-city deliveries by M&P take <strong style="color:var(--light);">1–3 business days</strong>, while same-day delivery is available in major cities like Karachi, Lahore, and Islamabad. You can also track via SMS by sending your tracking number to <strong style="color:var(--light);">9900</strong> with the prefix MNP.
+  </p>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--mid);border-top:1px solid #222;border-bottom:1px solid #222;max-width:100%;padding:4rem 5%;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <h2>Frequently Asked <span>Questions</span></h2>
+    <p class="section-sub">Everything you need to know about M&P tracking and MNP courier services in Pakistan.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Where can I track my M&P courier online?</h3>
+        <p>You can track your M&P parcel at <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">mnptracking.org.pk</a>. Enter your 10-digit consignment number to get live delivery status instantly.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is my M&P tracking number?</h3>
+        <p>Your M&P tracking number is a 10-digit consignment ID found on your physical booking receipt, SMS confirmation, or your eCommerce order dashboard under "Track Order".</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does M&P delivery take in Pakistan?</h3>
+        <p>M&P same-day delivery is available in major cities. Standard inter-city deliveries take 1–3 business days. Bulk or freight shipments may take 3–7 business days depending on weight and destination.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I track M&P courier by mobile number?</h3>
+        <p>Direct tracking by mobile number is not available publicly, but you can track via SMS by sending your MNP tracking number to <strong>9900</strong>. For detailed status, use <a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">MNP Tracking online</a>.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is mnptracking.org.pk an official M&P website?</h3>
+        <p><a href="https://mnptracking.org.pk" style="color:var(--red);font-weight:600;text-decoration:none;">mnptracking.org.pk</a> is an independent third-party tracking platform built to provide a faster and mobile-friendly tracking experience. It is not officially affiliated with M&P Express Logistics Pvt Ltd.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What cities does M&P deliver to in Pakistan?</h3>
+        <p>M&P delivers to 1,600+ locations across Pakistan including Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Peshawar, Quetta, and all Tier-2 and Tier-3 cities nationwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Track Your M&P Parcel Right Now</h2>
+  <p>Enter your MNP tracking number and get instant shipment updates — no login, no delays.</p>
+  <a href="https://mnptracking.org.pk">Go to MNP Tracking →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 MNP Tracking — Independent M&P Courier Tracking Platform for Pakistan</div>
+  <div>
+    <a href="https://mnptracking.org.pk">mnptracking.org.pk</a> &nbsp;|&nbsp;
+    Not affiliated with M&P Express Logistics Pvt Ltd
+  </div>
+</footer>
+
+</body>
+</html>
